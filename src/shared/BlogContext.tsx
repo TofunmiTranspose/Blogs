@@ -48,9 +48,9 @@ export const BlogProvider: React.FC<{ children: ReactNode }> = ({
     // Check if localStorage is available and retrieve blogs
     if (typeof window !== "undefined") {
       const savedBlogs = localStorage.getItem("blogs");
-      return savedBlogs ? JSON.parse(savedBlogs) : initial;
+      return savedBlogs ? JSON.parse(savedBlogs) : [...initial];
     }
-    return initial;
+    return [...initial];
   });
 
   useEffect(() => {
