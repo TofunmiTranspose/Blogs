@@ -7,16 +7,21 @@ const topics = [
   "Reading",
 ];
 const TopicsList = () => {
-  return <div className="bg-wjite p-4 rounded-lg shadow mt-8">
-    <h3 className="font-semibold text-lg mb-4">Topics for you</h3>
-    <div className="flex flex-wrap gap-2">
-      {topics.map((topic, i) => (
-        <span key={i} className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-full cursor-pointer hover:bg-gray-300">
-          {topic}
-        </span>
-      ))}
+  return (
+    <div className="bg-[#2E2B45] p-6 rounded-lg font-sans">
+      <h3 className="font-semibold text-xl mb-4 text-white">Topics for you</h3>
+      <div className="flex flex-wrap gap-2">
+        {topics.map((topic, i) => (
+          <span
+            key={i}
+            className="px-3 py-1 bg-[#FF69B4] text-white text-sm rounded-full cursor-pointer hover:bg-[#E65C9E] transition-colors duration-200"
+          >
+            {topic}
+          </span>
+        ))}
+      </div>
     </div>
-  </div>;
+  );
 };
 
 export default TopicsList;

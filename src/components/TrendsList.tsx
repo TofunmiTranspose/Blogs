@@ -14,15 +14,14 @@ const trends = [
 ];
 
 const TrendsList = () => {
-  return <div className="bg-white p-4 rounded-lg shadow mt-8">
-    <h3 className="font-semibold text-lg mb-4">Today's Top Trends</h3>
+  return <div className="bg-[#2E2B45] p-6 rounded-lg font-sans">
+    <h3 className="font-semibold text-xl mb-4 text-white">Today's Top Trends</h3>
     <ul className="space-y-4">
       {trends.map((trend, i) => (
         <li key={i} className="flex flex-col">
-          <span className="font-medium">{trend.title}</span>
-          <span className="text-sm text-gray-500">By {trend.author}</span>
+          <span className="font-medium text-white">{trend.title}</span>
+          <span className="text-sm text-gray-400">By {trend.author}</span>
         </li>
-
       ))}
     </ul>
   </div>;

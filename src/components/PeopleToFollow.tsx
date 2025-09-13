@@ -9,8 +9,8 @@ const people = [
 
 const PeopleToFollow = () => {
   return (
-    <div className="bg-white p-4 rounded-lg shadow">
-      <h3 className="font-semibold text-lg mb-4">People to follow</h3>
+    <div className="bg-[#2E2B45] p-6 rounded-lg font-sans">
+      <h3 className="font-semibold text-lg mb-4 text-white">People to follow</h3>
       <div className="space-y-4">
         {people.map((person, i) => (
           <UserCard key={person.name} person={person} index={i} />

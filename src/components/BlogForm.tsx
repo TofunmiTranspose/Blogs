@@ -25,7 +25,9 @@ const BlogForm = ({
       setTime(existingBlog.time);
     }
   }, [existingBlog]);
-  const handleSubmit = () => {
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     const blog: Blog = {
       id: existingBlog ? existingBlog.id : Date.now(),
       title,
@@ -38,46 +40,48 @@ const BlogForm = ({
     onClose();
   };
   return (
-    <div className="bg-white p-6 rounded-lg w-[30rem] mx-auto w-full">
-      <h3 className="font-semibold text-xl mb-2 text-gray-800">
+    <div className="p-8 rounded-2xl w-full max-w-lg mx-auto">
+      <h3 className="font-bold text-2xl mb-4 text-white text-center">
         {existingBlog ? "Edit Blog" : "Add Blog"}
       </h3>
-      <div className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <input
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="block w-full px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+          className="block w-full px-4 py-2 border border-gray-600 bg-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#64FFDA] transition-all duration-300"
+          required
         />
         <textarea
-          placeholder="description"
+          placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="block w-full px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+          className="block w-full px-4 py-2 border border-gray-600 bg-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#64FFDA] transition-all duration-300 h-32 resize-none"
+          required
         />
         <input
           type="text"
-          placeholder="Img URL"
+          placeholder="Image URL"
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          className="block w-full px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+          className="block w-full px-4 py-2 border border-gray-600 bg-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#64FFDA] transition-all duration-300"
         />
         <input
-          type='date'
+          type="date"
           value={time}
-          onChange={(e) => setTime(e.target.value)}
-          className="block w-full px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
+          onChange={(e) => setTime(e.target.value === '' ? Date.now().toString() : e.target.value)}
+          className="block w-full px-4 py-2 border border-gray-600 bg-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#64FFDA] transition-all duration-300"
         />
-      </div>
-      <section className="flex justify-end mt-6 space-x-4">
-        <button
-          onClick={handleSubmit}
-          className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-black"
-        >
-          {existingBlog ? "Update" : "Add"}
-        </button>
-      </section>
+        <div className="flex justify-end mt-6 space-x-4">
+          <button
+            type="submit"
+            className="bg-[#FF69B4] text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:bg-[#E65C9E] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#64FFDA] focus:ring-offset-2"
+          >
+            {existingBlog ? "Update" : "Add"}
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
